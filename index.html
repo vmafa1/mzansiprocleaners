@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mzansi Pro Cleaners</title>
+    <style>
+        /* Modern Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #00a8cc;
+            --secondary: #0c2461;
+            --light: #f4f7f6;
+            --dark: #2c3e50;
+        }
+
+        body {
+            color: var(--dark);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(12, 36, 97, 0.8), rgba(12, 36, 97, 0.8)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0086a3;
+        }
+
+        /* Trust Section */
+        .trust {
+            padding: 60px 8%;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .trust h2 {
+            font-size: 32px;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trust-item {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: var(--secondary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        /* Service Areas Section */
+        .areas {
+            padding: 40px 8%;
+            background: #fff;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .areas h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .area-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--secondary);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .tag.upcoming {
+            background: #b2bec3;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 8%;
+            background: var(--light);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: var(--secondary);
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: left;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 35px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+            color: var(--secondary);
+            font-size: 20px;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: #555;
+        }
+
+        /* Booking Form Section */
+        .booking-section {
+            padding: 80px 8%;
+            background: var(--secondary);
+            color: white;
+        }
+
+        .booking-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            color: var(--dark);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 600px) {
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Mzansi Pro<span> Cleaners</span></div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#booking" class="btn" style="padding: 8px 15px; color: white;">Get Free Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Spotless Cleaning, Made Simple</h1>
+        <p>Trust us to outshine the rest.</p>
+        <a href="#booking" class="btn">Book Your Cleaning Today</a>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+        <h2>Why Neighbors Trust Us</h2>
+        <div class="trust-grid">
+            <div class="trust-item">👤 Experienced Cleaning Team</div>
+            <div class="trust-item">📍 Recruited Locally</div>
+            <div class="trust-item">⏱️ Reliable</div>
+            <div class="trust-item">💼 Professionalism</div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="areas">
+        <h3>Servicing Areas</h3>
+        <div class="area-tags">
+            <div class="tag">Eqonce (King William's Town)</div>
+            <div class="tag">KuGompo (East London)</div>
+            <div class="tag upcoming">Other areas coming soon...</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p style="margin-top: -30px; margin-bottom: 40px; color: #666;">Available for Standard Cleaning or Deep Cleaning</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Home Cleaning</h3>
+                <p>Keep your personal living spaces immaculate, hygienic, and fresh for your family.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Office Cleaning</h3>
+                <p>Create a clean, productive, and professional environment for your staff and clients.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+                <h3>Rental Property</h3>
+                <p>Comprehensive moving in or moving out cleaning to secure deposits and prepare spaces.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛎️</div>
+                <h3>Guest House & Airbnb</h3>
+                <p>Fast turnaround, meticulous presentation, and self-catering accommodation staging.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+<section class="booking-section" id="booking">
+    <h2 class="section-title" style="color: white; text-align: center;">Request a Free Quote</h2>
+    <div class="booking-container">
+        <!-- 1. ACTION AND METHOD ADDED HERE -->
+        <form action="https://api.web3forms.com/submit" method="POST" id="quoteForm">
+            
+            <!-- 2. YOUR UNIQUE ACCESS KEY GOES HERE -->
+            <input type="hidden" name="access_key" value="456ae616-6231-40f7-9afc-d98eff599fda">
+            
+            <!-- Optional: Redirects user back to your site after success -->
+            <input type="hidden" name="from_name" value="Mzansi Pro Cleaners Website">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <!-- added name="name" -->
+                    <input type="text" id="name" name="name" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <!-- added name="email" -->
+                    <input type="email" id="email" name="email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Contact Number</label>
+                    <!-- added name="phone" -->
+                    <input type="tel" id="phone" name="phone" required placeholder="e.g. 083 123 4567">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <!-- added name="service_type" -->
+                    <select id="service" name="service_type" required>
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="Home - Standard Cleaning">Home - Standard Cleaning</option>
+                        <option value="Home - Deep Cleaning">Home - Deep Cleaning</option>
+                        <option value="Office - Standard Cleaning">Office - Standard Cleaning</option>
+                        <option value="Office - Deep Cleaning">Office - Deep Cleaning</option>
+                        <option value="Rental Property - Moving In/Out">Rental Property - Moving In/Out</option>
+                        <option value="Guest House / Airbnb / Self Catering">Guest House / Airbnb / Self Catering</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="size">Square Meters & Rooms</label>
+                    <!-- added name="space_size" -->
+                    <input type="text" id="size" name="space_size" required placeholder="e.g. 120sqm, 3 beds, 2 baths">
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date to Clean</label>
+                    <!-- added name="cleaning_date" -->
+                    <input type="date" id="date" name="cleaning_date" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="notes">Extra Notes / Special Instructions</label>
+                    <!-- added name="extra_notes" -->
+                    <textarea id="notes" name="extra_notes" placeholder="Tell us about pet hair, key arrangements, specific focus areas, etc."></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn" style="width: 100%; margin-top: 10px; font-size: 16px;">Send Request</button>
+        </form>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Mzansi Pro Cleaners. All rights reserved.</p>
+    </footer>
+
+
+</body>
+</html>
